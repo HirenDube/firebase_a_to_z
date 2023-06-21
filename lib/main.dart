@@ -1,13 +1,17 @@
 import 'package:firebase_a_to_z/register%20page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'File_Sharing_With_Firebase_Strage.dart';
 import 'Show Entreis.dart';
 import 'firebase_options.dart';
 import 'login page.dart';
+import 'package:media_store_plus/media_store_plus.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+MediaStore.appFolder = "MediaStorePlugin";
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -44,11 +48,12 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      initialRoute: "register",
+      initialRoute: "fileSharer",
       routes: {
         "register": (context) => RegisterPage(),
         "login": (context) => LoginPage(),
         "showData": (context) => const ShowEntries(),
+        "fileSharer": (context) => const ShareFiles(),
       },
     );
   }
